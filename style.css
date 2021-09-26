@@ -1,14 +1,16 @@
 html,body{
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    width: 100%;
     height: 100%;
-    border: none;
     font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
 }
 .container{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     height: 100%;
     background-color: antiquewhite;
 }
@@ -45,6 +47,9 @@ nav{
     border: 1px solid black;
     width: 35vw;
     height: 20vw;
+}
+.hide{
+    display: none;
 }
 
 /*temp*/
@@ -117,10 +122,94 @@ nav{
 
 
 /*平板*/
-@media screen and (min-width:481px) and (max-width:768px){
-
+@media (max-width:768px){
+    .data{
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        }
+    .city{
+        margin: 0;
+        width:100%;
+        height:20%;
+        font-size: 8vw;
+        font-weight: bold;
+        text-align: center;
+    }
+    .item_bar{ 
+        display: none;
+    }
+    .show{
+        margin: 0;
+    }
+    /*temp*/
+    .temp{
+        width: 100%;
+        height: 100%;
+    }
+    .temp_today{
+        width:100%;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+    .temp_icon{ 
+        width: 75%;
+        height: 40%;
+        margin: 20% 0%;
+    }
+    .temp_description span{
+        text-align: center;
+        margin: 10px;
+    }
+    .temp_description span:nth-child(1){
+        font-size: 11vw;
+    }
+    .temp_description span:nth-child(2){
+        font-size: 8vw;
+    }
+    .forecast{
+        display: none;
+    }
+    /* rain */
+    .rain{
+        height: 100%;
+    }
+    /* aqi */
+    .aqi{
+        flex-direction: column-reverse;
+        height: 100%;
+    }
+    .aqi_icon{
+        width: 50%;
+        height: 15%;
+    } 
 }
 /*手機*/
 @media screen and (max-width:480px){
-
+    .city{
+        font-size: 15vw;
+    }
+    /* temp */
+    .temp_today{
+        justify-content: space-around;
+    }
+    .temp_icon{
+        margin: 65% 0 0 0;
+        height: 30%;
+    }
+    .temp_description{
+        margin-bottom: 50%;
+    }
+    .temp_description span:nth-child(1){
+        font-size: 10vw;
+    }
+    .temp_description span:nth-child(2){
+        font-size: 8vw;
+    }
+    /* aqi */
+    .aqi_icon{
+        width: 50%;
+        height: 10%;
+    } 
 }
