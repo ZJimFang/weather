@@ -3,6 +3,7 @@ html,body{
     padding: 0;
     height: 100%;
     border: none;
+    font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
 }
 .container{
     display: flex;
@@ -28,38 +29,98 @@ nav{
 .item_bar{
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content:space-around;
     padding: 0px;
 }
 .item{
     padding: 4px 10px;
-    font-size: 30px;
+    font-size: 2.5vw;
     font-weight: bold;
     list-style: none;
     border: 1px solid black;
     cursor: pointer;
 }
 .show{
+    margin: 1%;
     border: 1px solid black;
-    width: 40vw;
-    height: 25vw;
+    width: 35vw;
+    height: 20vw;
+}
+
+/*temp*/
+.temp{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.temp_today{
+    width: 100%;
+    height: 60%;
     display: flex;
     flex-direction: row;
 }
-/*temp*/
-.icon{
+.temp_icon{
     width: 50%;
-    height: 45%;
-    margin: 6% 8% 0 7%;
+    margin: 5% 7%;
     border: 1px solid black;
 }
-.temp_detail{
+.temp_description{
     width: 100%;
-    height: 55%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.temp_high_low{
-    font-size: 3.5vw;
+.temp_description span:nth-child(1){
+    font-size: 3vw;
+}
+.temp_description span:nth-child(2){
+    font-size: 2vw;
+}
+.forecast{
+    width: 100%;
+    height: 38%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+}
+.forecast>div{
+    width: 20%;
+    height: 100%;
+    border: 1px solid black;
+}
+/* rain */
+.rain{
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.chanceOfRain{
+    display: block;
+    font-size: 8vw;
+}
+/* aqi */
+.aqi{
+    display: flex;
+    align-items: center;        
+    flex-direction: row;                                                                                                                                                                                                                                                                                                                                                                                                     
+}
+.aqi_icon{
+    width: 30%;
+    height: 50%;
+    border: 1px solid black;
+    margin: 0% 13% 0 17%;
+}
+.aqi_data{
+    font-size: 4.5vw; 
+}
+
+
+/*平板*/
+@media screen and (min-width:481px) and (max-width:768px){
+
+}
+/*手機*/
+@media screen and (max-width:480px){
+
 }
