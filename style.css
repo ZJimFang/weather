@@ -108,7 +108,7 @@ nav{
 .aqi{
     display: flex;
     align-items: center;        
-    flex-direction: row;                                                                                                                                                                                                                                                                                                                                                                                                     
+    flex-direction: row;      
 }
 .aqi_icon{
     width: 30%;
