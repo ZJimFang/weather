@@ -4,14 +4,35 @@
 //空汙 "https://data.epa.gov.tw/api/v1/aqx_p_432?api_key=c202e445-80d0-40bb-a134-788865b48beb"
 //😄😐🙁😷🤧
 const items = document.querySelectorAll('.item');
-items.forEach(item => {
-    item.addEventListener('click', changeItem)
-});
-
 const shows = document.querySelectorAll('.show');
-shows.forEach(show => {
-    show.style.display = "none";
-});
+
+init();
+settingWallpaper('sunny');
+
+function init() {
+    shows.forEach(show => {
+        show.style.display = "none";
+    });
+    items.forEach(item => {
+        item.addEventListener('click', changeItem)
+    });
+}
+
+function settingWallpaper(imgSrc) {
+    document.body.style.backgroundImage = `url('./img/wallpaper/${imgSrc}.jpg')`;
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+}
+
+function init() {
+    shows.forEach(show => {
+        show.style.display = "none";
+    });
+    items.forEach(item => {
+        item.addEventListener('click', changeItem)
+    });
+    settingWallpaper();
+}
 
 window.onresize = function () {
     if (screen.width <= 768) {
