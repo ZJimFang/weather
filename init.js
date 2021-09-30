@@ -7,7 +7,24 @@ init();
 settingImg('sunny');
 
 /**
- * hide all show and set the EventListener to item
+ * @description If the user scales the window size or different size scree, the content should be adaptive
+ */
+let contentAdaptive = () => {
+    if (document.body.clientWidth <= 768) {
+        shows.forEach(show => {
+            show.style.display = "";
+        })
+    } else {
+        shows.forEach(show => {
+            show.style.display = "none";
+        })
+    }
+}
+contentAdaptive();
+window.onresize = contentAdaptive;
+
+/**
+ * @description hide all show and set the EventListener to item
  */
 function init() {
     shows.forEach(show => {
@@ -19,8 +36,8 @@ function init() {
 }
 
 /**
- * according the data choose the wallpaper today 
- * @param {*} wallpaperSrc -wallpaper src 
+ * @description according the data choose the wallpaper today 
+ * @param {String} wallpaperSrc -wallpaper src 
  */
 function settingImg(wallpaperSrc) {
     document.body.style.backgroundImage = `url('./img/wallpaper/${wallpaperSrc}.jpg')`;
@@ -29,23 +46,7 @@ function settingImg(wallpaperSrc) {
 }
 
 /**
- * If the user scales the window size, the content should be adaptive
- */
-window.onresize = function () {
-    if (screen.width <= 768) {
-        shows.forEach(show => {
-            show.style.display = "";
-        })
-    } else {
-        shows.forEach(show => {
-            show.style.display = "none";
-        })
-    }
-}
-
-
-/**
- * only one show on the screen need to hide others
+ * @description only one show on the screen need to hide others
  */
 function changeItem() {
     shows.forEach(show => {

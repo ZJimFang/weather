@@ -52,10 +52,6 @@ nav{
     z-index: 2;
     backdrop-filter: blur(2rem);
 }
-.hide{
-    display: none;
-}
-
 /*temp*/
 .temp{
     display: flex;
