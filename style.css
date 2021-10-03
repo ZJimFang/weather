@@ -45,8 +45,8 @@ nav{
 .show{
     margin: 1%;
     border: 1px solid black;
-    width: 35vw;
-    height: 20vw;
+    width: 400px;
+    height: 250px;
     background: linear-gradient(to right bottom,rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3));
     border-radius: 2rem;
     z-index: 2;
