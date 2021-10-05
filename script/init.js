@@ -4,7 +4,6 @@ const items = document.querySelectorAll('.item');
 const shows = document.querySelectorAll('.show');
 
 init();
-settingImg('sunny');
 
 /**
  * @description If the user scales the window size or different size scree, the content should be adaptive
@@ -33,16 +32,6 @@ function init() {
     items.forEach(item => {
         item.addEventListener('click', changeItem)
     });
-}
-
-/**
- * @description according the data choose the wallpaper today 
- * @param {String} wallpaperSrc -wallpaper src 
- */
-function settingImg(wallpaperSrc) {
-    document.body.style.backgroundImage = `url('./img/wallpaper/${wallpaperSrc}.jpg')`;
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundSize = "cover";
 }
 
 /**

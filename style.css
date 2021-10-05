@@ -7,6 +7,8 @@ html,body{
     font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
     
 }
+
+
 .container{
     display: flex;
     flex-direction: column;
@@ -65,9 +67,8 @@ nav{
     flex-direction: row;
 }
 .temp_icon{
-    width: 50%;
+    width: 30%;
     margin: 5% 7%;
-    border: 1px solid black;
 }
 .temp_description{
     width: 100%;
@@ -142,6 +143,7 @@ nav{
         display: none;
     }
     .show{
+        width: 100px;
         margin: 0;
     }
     /*temp*/
@@ -197,7 +199,7 @@ nav{
         justify-content: space-around;
     }
     .temp_icon{
-        margin: 65% 0 0 0;
+        margin: 60% 0 0 0;
         height: 30%;
     }
     .temp_description{

@@ -5,7 +5,6 @@
 
 
 
-let weekWeather, AQI;
 getData();
 
 
@@ -25,12 +24,11 @@ function getData() {
         })
         //select the array I want
         .then(([weekWeatherJson, aqiJson]) => {
-            weekWeather = weekWeatherJson.records.locations[0].location;
+            let weekWeather = weekWeatherJson.records.locations[0].location;
             const aqi = aqiJson.records;
-            console.log(weekWeather)
+            putCityInSelect_And_EventListen(weekWeather);
             handleAqiData(aqi);
-            putCityInSelect(weekWeather);
-            showWeather()
+            show_MiddleWare('新竹縣', weekWeather);//first time in this app default location 新竹縣 
         })
         .catch(error => console.log(error));
 }
@@ -48,10 +46,10 @@ function getData() {
  * @property {Object} matchingLocation -the newly created json and CWB compare the results of the same location
  *  
  */
-async function handleAqiData(aqi) {
+const handleAqiData = async (aqi) => {
     try {
         const newAqiFetch = await fetch('./json/aqi.json');
-        AQI = await newAqiFetch.json();
+        const AQI = await newAqiFetch.json();
         AQI.forEach((item) => {
             let aqiVar = 0;
             let matchingLocation = aqi.filter((element) => {
@@ -62,7 +60,7 @@ async function handleAqiData(aqi) {
             })
             return Object.assign(item, { "AQI": Math.floor(aqiVar / matchingLocation.length) });
         })
-        console.log(AQI);
+        return AQI;
     } catch (error) {
         console.log(error)
     }
@@ -75,36 +73,137 @@ async function handleAqiData(aqi) {
  * @property {Object} select -select DOM select element (id:city) 
  * @property {Object} option -create DOM option element
  */
-function putCityInSelect(weekWeather) {
+function putCityInSelect_And_EventListen(weekWeather) {
     const select = document.querySelector('#city');
     weekWeather.forEach(element => {
         const option = document.createElement('option');
         option.innerHTML = element.locationName;
         select.appendChild(option);
     });
-    select.addEventListener('change', showWeather)
+
+    select.addEventListener('change', () => {
+        show_MiddleWare(select.value, weekWeather)
+    })
 }
 
+
 /**
- * @description Visualize the data
- * @param {Object} weekWeather -weekWeather data
+ * @description The middleware that return the location we select match in data then pass the location to
+ *              show_Temp(location) show_Rain(location) show_Aqi(location)
+ * @param {Object} weekWeather - weekWeather
+ * @param {String} select_value - the city we selected
+ * @property {String} select_cityName - select_value container
  * @property {String} select_cityName -value from select eventListener, default:"新竹縣"
- * @property {Object} MinT_MaxT - select DOM span element (id:MinT_MaxT) 
- * @property {Object} Wx - select DOM span element (id:Wx) 
- * @property {Number} WxValue - store Wx value for icon
  * @property {Object} location - find the same location name(select value) in weekWeather
  */
-function showWeather() {
-    let select_cityName = this.value || '新竹縣';
-    const MinT_MaxT = document.querySelector('#MinT_MaxT');
-    const Wx = document.querySelector('#Wx');
-    let WxValue = 0;
+function show_MiddleWare(select_value, weekWeather) {
+    console.log(weekWeather);
+    let select_cityName = select_value;
     let location = weekWeather.filter((element) => {
         return element.locationName === select_cityName;
     })
+    show_Temp(location);
+    show_Rain(location);
+}
+
+
+/**
+ * @description Visualize the temp block
+ * @param {Object} location -the city filter from show_MiddleWare
+ * @property {Object} MinT_MaxT - select DOM span element (id:MinT_MaxT) 
+ * @property {Object} Wx - select DOM span element (id:Wx) 
+ * @property {Number} WxValue - store Wx value for icon
+ */
+function show_Temp(location) {
+    const MinT_MaxT = document.querySelector('#MinT_MaxT');
+    const Wx = document.querySelector('#Wx');
+
+    let WxValue = 0;
+
     MinT_MaxT.innerHTML = `${location[0].weatherElement[8].time[0].elementValue[0].value}°C 
                             ~ ${location[0].weatherElement[12].time[0].elementValue[0].value}°C`;
-
     Wx.innerHTML = `${location[0].weatherElement[6].time[0].elementValue[0].value}`;
+
+    //use Wx to setting icon and wallpaper 
     WxValue = parseInt(location[0].weatherElement[6].time[0].elementValue[1].value);
+    switch (WxValue) {
+        //sunny
+        case 1:
+            settingImg('sunny')
+            break;
+        //sunny + cloud
+        case 2: case 3:
+            settingImg('mostlyCloudy')
+            break;
+        //cloud
+        case 4: case 5: case 6: case 7:
+            settingImg('cloud');
+            break;
+        //rain
+        case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 20: case 29:
+        case 30: case 31: case 32: case 37:
+            settingImg('rain');
+            break;
+        //thunder + rain
+        case 15: case 16: case 17: case 18: case 33: case 34: case 35: case 36:
+            settingImg('thunderRain');
+            break;
+        //sun + rain
+        case 19:
+            settingImg('sunRain');
+            break;
+        //sun + thunder + rain
+        case 21: case 22:
+            settingImg('sunThunderRain');
+            break;
+        //snow
+        case 23: case 41: case 42:
+            settingImg('snow');
+            break;
+        //fog
+        case 24: case 25: case 26: case 27: case 28: case 38: case 39:
+            settingImg('fog');
+            break;
+        default:
+            break;
+    }
+}
+
+
+/**
+ * @description Visualize the rain block
+ * @param {Object} location -the city filter from show_MiddleWare
+ * @property {Object} chanceOfRain - select DOM div element
+*/
+function show_Rain(location) {
+    const chanceOfRain = document.querySelector('.chanceOfRain');
+    chanceOfRain.innerHTML = `${location[0].weatherElement[0].time[0].elementValue[0].value}%`;
+}
+
+
+/**
+ * @description Visualize the AQI block
+ * @param {Object} location -the city filter from show_MiddleWare
+ * @property {Object} aqi_icon - select DOM div element
+ * @property {Object} aqi_data - select DOM div element
+*/
+function show_Aqi(location) {
+    const aqi_icon = document.querySelector('.aqi_icon');
+    const aqi_data = document.querySelector('.aqi_data');
+
+    // aqi_data.innerHTML = 
+}
+
+
+/**
+ * @description according the data choose the wallpaper today 
+ * @param {String} Wx -wallpaper src 
+ */
+function settingImg(Wx) {
+    const temp_icon = document.querySelector('.temp_icon');
+    temp_icon.src = `./img/icon/${Wx}.png`;
+
+    document.body.style.backgroundImage = `url('./img/wallpaper/${Wx}.jpg')`;
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
 }
