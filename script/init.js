@@ -1,4 +1,3 @@
-//😄😐🙁😷🤧
 
 const items = document.querySelectorAll('.item');
 const shows = document.querySelectorAll('.show');

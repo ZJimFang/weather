@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/FangJim/weather/issues"
   },
-  "homepage": "https://github.com/FangJim/weather#readme"
+  "homepage": "https://github.com/FangJim/weather#readme",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
 }

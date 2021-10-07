@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 
 <body>
@@ -22,31 +23,31 @@
         </nav>
         <div class="data">
             <div class="rain show" id="rain">
-                <span class="chanceOfRain">40%</span>
+                <span class="chanceOfRain"></span>
             </div>
             <div class="temp show" id="temp">
                 <div class="temp_today">
                     <img class="temp_icon" src=""></img>
                     <div class="temp_description">
-                        <span id="MinT_MaxT">30C ~ 50C</span>
-                        <span id="Wx">多雲時晴</span>
+                        <span id="MinT_MaxT"></span>
+                        <span id="Wx"></span>
                     </div>
                 </div>
                 <div class="forecast">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div class="forecast_item">
+                        <img src="./img/icon/cloud.png" alt="" class="forecast_icon">
+                        <span class="forecast_T">30C</span>
+                        <span class="forecast_Wx">多雲時晴</span>
+                    </div>
                 </div>
             </div>
             <div class="aqi show" id="aqi">
-                <div src="" alt="" class="aqi_icon"></div>
+                <img src="" alt="" class="aqi_icon"></img>
                 <span class="aqi_data"></span>
             </div>
         </div>
-        <script src="./script/init.js"></script>
         <script src="./script/data.js"></script>
+        <script src="./script/init.js"></script>
 </body>
 
 </html>

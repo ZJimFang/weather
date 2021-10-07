@@ -22,13 +22,12 @@ function getData() {
         .then(values => {
             return Promise.all(values.map(value => value.json()));
         })
-        //select the array I want
         .then(([weekWeatherJson, aqiJson]) => {
-            let weekWeather = weekWeatherJson.records.locations[0].location;
+            //select the array I want
+            const weekWeather = weekWeatherJson.records.locations[0].location;
             const aqi = aqiJson.records;
-            putCityInSelect_And_EventListen(weekWeather);
-            handleAqiData(aqi);
-            show_MiddleWare('新竹縣', weekWeather);//first time in this app default location 新竹縣 
+            dataProcess(weekWeather, aqi);//create new aqi data
+            forecast(weekWeather);
         })
         .catch(error => console.log(error));
 }
@@ -39,14 +38,14 @@ function getData() {
  *              Some locations are subdivided into towns.
  *              As a result, a location may have multiple pieces of data,
  *              so it needs to be aggregated and averaged.
+ * @param {Object} weekWeather -weekWeather data
  * @param {Object} aqi -aqi data
  * @property {Object} newAqiFetch -fetch new aqi container (./json/aqi.json)
  * @property {Object} AQI -new aqi container
  * @property {Number} aqiVar -accumulate this data and finally calculate the average
  * @property {Object} matchingLocation -the newly created json and CWB compare the results of the same location
- *  
  */
-const handleAqiData = async (aqi) => {
+async function dataProcess(weekWeather, aqi) {
     try {
         const newAqiFetch = await fetch('./json/aqi.json');
         const AQI = await newAqiFetch.json();
@@ -58,31 +57,34 @@ const handleAqiData = async (aqi) => {
             matchingLocation.forEach((item) => {
                 aqiVar += parseInt(item.AQI);
             })
-            return Object.assign(item, { "AQI": Math.floor(aqiVar / matchingLocation.length) });
+            return Object.assign(item, { "AQI": Math.floor(aqiVar / matchingLocation.length) });//assign new data to aqi.json
         })
-        return AQI;
+        return putCityInSelect_And_EventListen(weekWeather, AQI)
     } catch (error) {
         console.log(error)
     }
 }
 
-
 /**
  * @description put location name in select
  * @param {Object} weekWeather -weekWeather data
+ * @param {Object} AQI -AQI data(new)
  * @property {Object} select -select DOM select element (id:city) 
  * @property {Object} option -create DOM option element
  */
-function putCityInSelect_And_EventListen(weekWeather) {
+function putCityInSelect_And_EventListen(weekWeather, AQI) {
     const select = document.querySelector('#city');
+    console.log(weekWeather)
     weekWeather.forEach(element => {
         const option = document.createElement('option');
         option.innerHTML = element.locationName;
         select.appendChild(option);
     });
 
+    show_MiddleWare('新竹縣', weekWeather, AQI);//first time in this application 
+
     select.addEventListener('change', () => {
-        show_MiddleWare(select.value, weekWeather)
+        show_MiddleWare(select.value, weekWeather, AQI);
     })
 }
 
@@ -90,20 +92,24 @@ function putCityInSelect_And_EventListen(weekWeather) {
 /**
  * @description The middleware that return the location we select match in data then pass the location to
  *              show_Temp(location) show_Rain(location) show_Aqi(location)
- * @param {Object} weekWeather - weekWeather
  * @param {String} select_value - the city we selected
+ * @param {Object} weekWeather - weekWeather data
+ * @param {Object} AQI - AQI data
  * @property {String} select_cityName - select_value container
  * @property {String} select_cityName -value from select eventListener, default:"新竹縣"
  * @property {Object} location - find the same location name(select value) in weekWeather
  */
-function show_MiddleWare(select_value, weekWeather) {
-    console.log(weekWeather);
+function show_MiddleWare(select_value, weekWeather, AQI) {
     let select_cityName = select_value;
-    let location = weekWeather.filter((element) => {
+    let weekWeather_location = weekWeather.filter((element) => {
         return element.locationName === select_cityName;
     })
-    show_Temp(location);
-    show_Rain(location);
+    let AQI_location = AQI.filter((element) => {
+        return element.Country === select_cityName;
+    })
+    show_Temp(weekWeather_location);
+    show_Rain(weekWeather_location);
+    show_AQI(AQI_location);
 }
 
 
@@ -186,24 +192,53 @@ function show_Rain(location) {
  * @param {Object} location -the city filter from show_MiddleWare
  * @property {Object} aqi_icon - select DOM div element
  * @property {Object} aqi_data - select DOM div element
+ * @property {Number} aqi_value -this location's aqi value
 */
-function show_Aqi(location) {
+function show_AQI(location) {
     const aqi_icon = document.querySelector('.aqi_icon');
     const aqi_data = document.querySelector('.aqi_data');
-
-    // aqi_data.innerHTML = 
+    let aqi_value = location[0].AQI;
+    aqi_data.innerHTML = `${aqi_value}`;
+    switch (Math.floor(aqi_value / 50)) {
+        case 0:
+            aqi_icon.src = `./img/emoji/1.png`;
+            break;
+        case 1:
+            aqi_icon.src = `./img/emoji/2.png`;
+            break;
+        case 2:
+            aqi_icon.src = `./img/emoji/3.png`;
+            break;
+        case 3:
+            aqi_icon.src = `./img/emoji/4.png`;
+            break;
+        case 4: case 5:
+            aqi_icon.src = `./img/emoji/5.png`;
+            break;
+        case 6: case 7:
+            aqi_icon.src = `./img/emoji/5.png`;
+            break;
+        default:
+            alert('Wear your mask up,Now!');
+            aqi_icon.src = `./img/emoji/warning.png`;
+            break;
+    }
 }
 
 
 /**
- * @description according the data choose the wallpaper today 
- * @param {String} Wx -wallpaper src 
+ * @description according the data choose the img today 
+ * @param {String} img -img src 
  */
-function settingImg(Wx) {
+function settingImg(img) {
     const temp_icon = document.querySelector('.temp_icon');
-    temp_icon.src = `./img/icon/${Wx}.png`;
+    temp_icon.src = `./img/icon/${img}.png`;
 
-    document.body.style.backgroundImage = `url('./img/wallpaper/${Wx}.jpg')`;
+    document.body.style.backgroundImage = `url('./img/wallpaper/${img}.jpg')`;
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
+}
+
+function forecast(weekWeather) {
+
 }
