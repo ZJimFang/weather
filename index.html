@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style/style.css">
     <title>Document</title>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 </head>
@@ -29,15 +29,41 @@
                 <div class="temp_today">
                     <img class="temp_icon" src=""></img>
                     <div class="temp_description">
+                        <span class="temp_date"></span>
                         <span id="MinT_MaxT"></span>
                         <span id="Wx"></span>
                     </div>
                 </div>
                 <div class="forecast">
+                    <!-- <div class="forecast_item">
+                        <span class="forecast_date"></span>
+                        <img src="" alt="" class="forecast_icon">
+                        <span class="forecast_T"></span>
+                    </div> -->
                     <div class="forecast_item">
-                        <img src="./img/icon/cloud.png" alt="" class="forecast_icon">
-                        <span class="forecast_T">30C</span>
-                        <span class="forecast_Wx">多雲時晴</span>
+                        <span class="forecast_date"></span>
+                        <img src="" alt="" class="forecast_icon">
+                        <span class="forecast_T"></span>
+                    </div>
+                    <div class="forecast_item">
+                        <span class="forecast_date"></span>
+                        <img src="" alt="" class="forecast_icon">
+                        <span class="forecast_T"></span>
+                    </div>
+                    <div class="forecast_item">
+                        <span class="forecast_date"></span>
+                        <img src="" alt="" class="forecast_icon">
+                        <span class="forecast_T"></span>
+                    </div>
+                    <div class="forecast_item">
+                        <span class="forecast_date"></span>
+                        <img src="" alt="" class="forecast_icon">
+                        <span class="forecast_T"></span>
+                    </div>
+                    <div class="forecast_item">
+                        <span class="forecast_date"></span>
+                        <img src="" alt="" class="forecast_icon">
+                        <span class="forecast_T"></span>
                     </div>
                 </div>
             </div>
@@ -46,6 +72,7 @@
                 <span class="aqi_data"></span>
             </div>
         </div>
+        <script src="./script/show.js"></script>
         <script src="./script/data.js"></script>
         <script src="./script/init.js"></script>
 </body>

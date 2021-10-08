@@ -76,9 +76,12 @@ nav{
     justify-content: center;
 }
 .temp_description span:nth-child(1){
-    font-size: 3vw;
+    font-size: 1.5vw;
 }
 .temp_description span:nth-child(2){
+    font-size: 3vw;
+}
+.temp_description span:nth-child(3){
     font-size: 2vw;
 }
 .forecast{
@@ -99,10 +102,15 @@ nav{
     border: 1px solid black;
     border-radius: 1rem;
 }
+.forecast_date{
+    font-weight: bold;
+}
 .forecast_icon{
     width:70%;
 }
 .forecast_T{
+    text-align: center;
+    font-size: 1em;
     font-weight: bold;
 }
 /* rain */
