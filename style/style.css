@@ -1,3 +1,6 @@
+:root {
+    --height: 0px;
+  }
 html,body{
     box-sizing: border-box;
     margin: 0;
@@ -5,7 +8,6 @@ html,body{
     width: 100%;
     height: 100%;
     font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
-    
 }
 
 .container{
@@ -67,7 +69,7 @@ nav{
 }
 .temp_icon{
     width: 30%;
-    margin: 5% 7%;
+    margin: 3% 7%;
 }
 .temp_description{
     width: 100%;
@@ -141,7 +143,79 @@ nav{
     font-size: 4.5vw; 
 }
 
+section{
+    border-radius: 2rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+section .wave{
+    position:absolute;
+    left: 0;
+    width: 100%;
+    background-image: url('../img/others/smoke.png');
+    background-size: 1000px 100px;
+}
+section .wave1{
+    height:var(--height);
+    opacity: 0.2;
+    animation: animate 30s linear infinite;
+    z-index: 1000;
+    animation-delay: 0s;
+    bottom: -40px;
+}
 
+section .wave2{
+    height:var(--height);
+    opacity: 0.7;
+    animation: animate2 45s linear infinite;
+    z-index: 999;
+    animation-delay: 5s;
+    bottom: -30px;
+}
+section .wave3{
+    height:var(--height);
+    opacity: 0.5;
+    animation: animate 30s linear infinite;
+    z-index: 997;
+    animation-delay: -2s;
+    bottom: 0px;
+}
+section .wave4{
+    height:var(--height);
+    opacity: 0.8;
+    animation: animate2 40s linear infinite;
+    z-index: 998;
+    animation-delay: -2s;
+    bottom: 30px;
+}
+section .wave5{
+    height:var(--height);
+    opacity: 0.7;
+    animation: animate 25s linear infinite;
+    z-index: 996;
+    animation-delay: -2s;
+    bottom: 10px;
+}
+
+@keyframes animate{
+    0%{
+        background-position-x:0px ;
+    }
+    100%{
+        background-position-x: 1000px;
+    }
+}
+@keyframes animate2{
+    0%{
+        background-position-x:1000px ;
+    }
+    100%{
+        background-position-x: 0px;
+    }
+}
 /*平板*/
 @media (max-width:768px){
     .data{

@@ -59,11 +59,12 @@ function show_Temp(location) {
  * @property {Object} forecast_date -select DOM div element
  */
 function show_forecast(location) {
+    console.log(location)
     const date = new Date();
     const forecast_date = document.querySelectorAll('.forecast_date');
     const forecast_T = document.querySelectorAll('.forecast_T');
     let month = date.getMonth() + 1;
-    let day = date.getDay() + 3;
+    let day = date.getDay() + 4;
     for (let index = 0; index < 5; index++) {
         let WxValue = parseInt(location[0].weatherElement[6].time[index * 2 + 2].elementValue[1].value);
         forecast_date[index].innerHTML = `${month < 10 ? '0' + month : month}/${day + index < 10 ? '0' + (day + index) : (day + index)}`;
@@ -150,25 +151,32 @@ function show_AQI(location) {
     switch (Math.floor(aqi_value / 50)) {
         case 0:
             settingImg('AQI', 1);
+            AQI_effect(0);
             break;
         case 1:
             settingImg('AQI', 2);
+            AQI_effect(42);
             break;
         case 2:
             settingImg('AQI', 3);
+            AQI_effect(84);
             break;
         case 3:
             settingImg('AQI', 4);
+            AQI_effect(126);
             break;
         case 4: case 5:
             settingImg('AQI', 5);
+            AQI_effect(170);
             break;
         case 6: case 7:
             settingImg('AQI', 5);
+            AQI_effect(212);
             break;
         default:
             alert('Wear your mask up,Now!');
             settingImg('AQI', 'warning');
+            AQI_effect(250);
             break;
     }
 }

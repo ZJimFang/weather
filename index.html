@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./style/style.css">
     <title>Document</title>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/rainyday.js/dist/rainyday.min.js"></script>
 </head>
 
 <body>
@@ -35,11 +36,6 @@
                     </div>
                 </div>
                 <div class="forecast">
-                    <!-- <div class="forecast_item">
-                        <span class="forecast_date"></span>
-                        <img src="" alt="" class="forecast_icon">
-                        <span class="forecast_T"></span>
-                    </div> -->
                     <div class="forecast_item">
                         <span class="forecast_date"></span>
                         <img src="" alt="" class="forecast_icon">
@@ -68,13 +64,21 @@
                 </div>
             </div>
             <div class="aqi show" id="aqi">
+                <section>
+                    <div class="wave wave1"></div>
+                    <div class="wave wave2"></div>
+                    <div class="wave wave3"></div>
+                    <div class="wave wave4"></div>
+                    <div class="wave wave5"></div>
+                </section>
                 <img src="" alt="" class="aqi_icon"></img>
                 <span class="aqi_data"></span>
             </div>
         </div>
-        <script src="./script/show.js"></script>
+        <script src="./script/visualization.js"></script>
         <script src="./script/data.js"></script>
         <script src="./script/init.js"></script>
+        <script src="./script/effect.js"></script>
 </body>
 
 </html>
