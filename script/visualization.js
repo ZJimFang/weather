@@ -37,7 +37,7 @@ function show_Temp(location) {
     const Wx = document.querySelector('#Wx');
 
     let month = date.getMonth() + 1;
-    let day = date.getDay() + 3;
+    let day = date.getDate();
     let WxValue = 0;
 
     temp_date.innerHTML = `${month < 10 ? '0' + month : month}/${day < 10 ? '0' + day : day}`;
@@ -59,12 +59,11 @@ function show_Temp(location) {
  * @property {Object} forecast_date -select DOM div element
  */
 function show_forecast(location) {
-    console.log(location)
     const date = new Date();
     const forecast_date = document.querySelectorAll('.forecast_date');
     const forecast_T = document.querySelectorAll('.forecast_T');
     let month = date.getMonth() + 1;
-    let day = date.getDay() + 4;
+    let day = date.getDate() + 1;//tomorrow
     for (let index = 0; index < 5; index++) {
         let WxValue = parseInt(location[0].weatherElement[6].time[index * 2 + 2].elementValue[1].value);
         forecast_date[index].innerHTML = `${month < 10 ? '0' + month : month}/${day + index < 10 ? '0' + (day + index) : (day + index)}`;
@@ -130,10 +129,13 @@ function judgeIcon(information, WxValue) {
  * @description Visualize the rain block
  * @param {Object} location -the city filter from show_MiddleWare
  * @property {Object} chanceOfRain - select DOM div element
+ * @property {Object} value - chance of rain 
 */
 function show_Rain(location) {
     const chanceOfRain = document.querySelector('.chanceOfRain');
-    chanceOfRain.innerHTML = `${location[0].weatherElement[0].time[0].elementValue[0].value}%`;
+    const value = location[0].weatherElement[0].time[0].elementValue[0].value;
+    chanceOfRain.innerHTML = `${value}%`;
+    rain_effect(value);
 }
 
 
@@ -174,7 +176,6 @@ function show_AQI(location) {
             AQI_effect(212);
             break;
         default:
-            alert('Wear your mask up,Now!');
             settingImg('AQI', 'warning');
             AQI_effect(250);
             break;

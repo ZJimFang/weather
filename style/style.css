@@ -50,7 +50,7 @@ nav{
     border: 1px solid black;
     width: 400px;
     height: 250px;
-    background: linear-gradient(to right bottom,rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.3));
+    background: linear-gradient(to right bottom,rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0));
     border-radius: 2rem;
     z-index: 2;
     backdrop-filter: blur(2rem);
@@ -117,7 +117,6 @@ nav{
 }
 /* rain */
 .rain{
-    background-color: gray;
     display: flex;
     align-items: center;
     justify-content: center;
