@@ -11,6 +11,12 @@ function AQI_effect(value) {
  * @param {Number} value -The larger the value, the higher the chance of rain
  */
 function rain_effect(value) {
+    const rain = document.querySelector('.rain');
     console.log(value);
-    chance = value / 100;
+    if (value > 0) {
+        rain.classList.add("rainEffect");
+    }
+    else {
+        rain.classList.remove("rainEffect");
+    }
 }

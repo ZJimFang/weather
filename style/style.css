@@ -121,6 +121,23 @@ nav{
     align-items: center;
     justify-content: center;
 }
+.rainEffect{
+    background-image: url('../img/others/rain.png');
+    background-size: cover;
+    animation: rain 0.3s linear infinite;
+}
+.rainEffect::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    transform: rotate(180deg);
+    background-image: url('../img/others/thunder.png');
+    opacity: 1;
+    animation: thunder 4s linear infinite;
+}
 .chanceOfRain{
     display: block;
     font-size: 8vw;
@@ -150,14 +167,14 @@ section{
     z-index: -1;
     overflow: hidden;
 }
-section .wave{
+section .smoke{
     position:absolute;
     left: 0;
     width: 100%;
     background-image: url('../img/others/smoke.png');
     background-size: 1000px 100px;
 }
-section .wave1{
+section .smoke1{
     height:var(--height);
     opacity: 0.2;
     animation: animate 30s linear infinite;
@@ -166,7 +183,7 @@ section .wave1{
     bottom: -40px;
 }
 
-section .wave2{
+section .smoke2{
     height:var(--height);
     opacity: 0.7;
     animation: animate2 45s linear infinite;
@@ -174,7 +191,7 @@ section .wave2{
     animation-delay: 5s;
     bottom: -30px;
 }
-section .wave3{
+section .smoke3{
     height:var(--height);
     opacity: 0.5;
     animation: animate 30s linear infinite;
@@ -182,7 +199,7 @@ section .wave3{
     animation-delay: -2s;
     bottom: 0px;
 }
-section .wave4{
+section .smoke4{
     height:var(--height);
     opacity: 0.8;
     animation: animate2 40s linear infinite;
@@ -190,7 +207,7 @@ section .wave4{
     animation-delay: -2s;
     bottom: 30px;
 }
-section .wave5{
+section .smoke5{
     height:var(--height);
     opacity: 0.7;
     animation: animate 25s linear infinite;
@@ -213,6 +230,40 @@ section .wave5{
     }
     100%{
         background-position-x: 0px;
+    }
+}
+@keyframes rain{
+    0%{
+        background-position:20% 100%;
+    }
+    100%{
+        background-position:0% 0%;
+    }
+}
+@keyframes thunder{
+    0%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 0;
+    }
+    21%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 0;
+    }
+    31%{
+        opacity: 1;
+    }
+    35%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
     }
 }
 /*平板*/
