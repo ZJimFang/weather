@@ -22,8 +22,8 @@ html,body{
 }
 .city{
     margin: 40px 0px 10px 0px;
-    height:70px;
-    font-size: 30px;
+    height:80px;
+    font-size: 45px;
     font-weight: bold;
     width: auto;
     padding: 0 2%;
@@ -32,7 +32,7 @@ option{
     align-items: center;
 }
 nav{
-    width: 400px;
+    width: 600px;
 }
 .item_bar{
     display: flex;
@@ -41,8 +41,8 @@ nav{
     padding: 0px;
 }
 .item{
-    padding: 4px 10px;
-    font-size: 25px;
+    padding: 4px 15px;
+    font-size: 45px;
     font-weight: bold;
     list-style: none;
     border: 1px solid black;
@@ -51,8 +51,8 @@ nav{
 .show{
     margin: 1%;
     border: 1px solid black;
-    width: 440px;
-    height: 260px;
+    width: 650px;
+    height: 380px;
     background: linear-gradient(to right bottom,rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0));
     border-radius: 2rem;
     z-index: 2;
@@ -81,13 +81,13 @@ nav{
     justify-content: center;
 }
 .temp_description span:nth-child(1){
-    font-size: 15px;
-}
-.temp_description span:nth-child(2){
     font-size: 30px;
 }
+.temp_description span:nth-child(2){
+    font-size: 40px;
+}
 .temp_description span:nth-child(3){
-    font-size: 20px;
+    font-size: 35px;
 }
 .forecast{
     width: 100%;
@@ -133,9 +133,9 @@ nav{
     content: "";
     position: absolute;
     top: -30px;
-    background-size: 350px 250px;
-    width: 350px;
-    height: 250px;
+    background-size: 600px 300px;
+    width: 600px;
+    height: 300px;
     transform: rotate(180deg);
     background-image: url('../img/others/thunder.png');
     opacity: 0.7;
@@ -143,7 +143,7 @@ nav{
 }
 .chanceOfRain{
     display: block;
-    font-size: 80px;
+    font-size: 120px;
 }
 /* aqi */
 .aqi{
@@ -159,7 +159,7 @@ nav{
     text-align: center;
 }
 .aqi_data{
-    font-size: 45px; 
+    font-size: 80px; 
 }
 
 section{
@@ -330,6 +330,7 @@ section .smoke5{
         height: 100%;
     }
     .chanceOfRain{
+        font-size: 50px;
         margin: 5px;
     }
     .thunder{
