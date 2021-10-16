@@ -75,6 +75,10 @@ function putCityInSelect_And_EventListen(weekWeather, AQI) {
     show_MiddleWare('新竹縣', weekWeather, AQI);//first time in this application 
 
     select.addEventListener('change', () => {
+        if (document.querySelector(".thunder")) {
+            let node = document.querySelector(".thunder");
+            node.remove();
+        }
         show_MiddleWare(select.value, weekWeather, AQI);
     })
 }

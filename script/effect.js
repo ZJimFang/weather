@@ -19,10 +19,14 @@ function rain_effect(value) {
         rain.classList.remove("rainEffect");
     }
 }
-
+/**
+ * @description thunder effect
+ */
 function thunder() {
     const div = document.createElement('div');
     div.classList.add('thunder');
     const rain = document.querySelector('.rain');
     rain.appendChild(div);
 }
+
+

@@ -8,6 +8,9 @@ html,body{
     width: 100%;
     height: 100%;
     font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;　
 }
 
 .container{
@@ -53,7 +56,7 @@ nav{
     background: linear-gradient(to right bottom,rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0));
     border-radius: 2rem;
     z-index: 2;
-    backdrop-filter: blur(0.5rem);
+    backdrop-filter: blur(1.5rem);
 }
 /*temp*/
 .temp{
@@ -266,6 +269,8 @@ section .smoke5{
         opacity: 0;
     }
 }
+
+
 /*平板*/
 @media (max-width:768px){
     .data{
@@ -285,7 +290,7 @@ section .smoke5{
         display: none;
     }
     .show{
-        width: 100px;
+        width: auto;
         margin: 0;
     }
     /*temp*/
@@ -312,7 +317,10 @@ section .smoke5{
         font-size: 11vw;
     }
     .temp_description span:nth-child(2){
-        font-size: 8vw;
+        font-size: 10vw;
+    }
+    .temp_description span:nth-child(3){
+        font-size: 7vw;
     }
     .forecast{
         display: none;
@@ -321,15 +329,38 @@ section .smoke5{
     .rain{
         height: 100%;
     }
+    .chanceOfRain{
+        margin: 5px;
+    }
+    .thunder{
+        width: 100%;
+        height: 100%;
+    }
     /* aqi */
     .aqi{
+        justify-content: center;
         flex-direction: column-reverse;
         height: 100%;
     }
+    section{
+        display: none;
+    }
+    .aqi_data{
+        margin: 30px;
+        font-size: 8vw;
+    }
     .aqi_icon{
-        width: 50%;
+        width: 100%;
         height: 15%;
     } 
+    @keyframes rain{
+        0%{
+            background-position:0% 20%;
+        }
+        100%{
+            background-position:2% 0%;
+        }
+    }
 }
 /*手機*/
 @media screen and (max-width:480px){
@@ -354,8 +385,12 @@ section .smoke5{
         font-size: 8vw;
     }
     /* aqi */
+    .aqi_data{
+        margin: 20px;
+        font-size: 8vw;
+    }
     .aqi_icon{
-        width: 50%;
+        width: 90%;
         height: 10%;
     } 
 }
