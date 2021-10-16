@@ -12,11 +12,17 @@ function AQI_effect(value) {
  */
 function rain_effect(value) {
     const rain = document.querySelector('.rain');
-    console.log(value);
-    if (value > 0) {
+    if (value > 30) {
         rain.classList.add("rainEffect");
     }
     else {
         rain.classList.remove("rainEffect");
     }
+}
+
+function thunder() {
+    const div = document.createElement('div');
+    div.classList.add('thunder');
+    const rain = document.querySelector('.rain');
+    rain.appendChild(div);
 }

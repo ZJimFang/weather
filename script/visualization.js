@@ -103,6 +103,9 @@ function judgeIcon(information, WxValue) {
         //thunder + rain
         case 15: case 16: case 17: case 18: case 33: case 34: case 35: case 36:
             settingImg(information, 'thunderRain');
+            if (information === 'today') {
+                thunder();
+            }
             break;
         //sun + rain
         case 19:
@@ -111,6 +114,9 @@ function judgeIcon(information, WxValue) {
         //sun + thunder + rain
         case 21: case 22:
             settingImg(information, 'sunThunderRain');
+            if (information === 'today') {
+                thunder();
+            }
             break;
         //snow
         case 23: case 41: case 42:

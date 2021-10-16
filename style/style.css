@@ -48,12 +48,12 @@ nav{
 .show{
     margin: 1%;
     border: 1px solid black;
-    width: 400px;
-    height: 250px;
+    width: 440px;
+    height: 260px;
     background: linear-gradient(to right bottom,rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0));
     border-radius: 2rem;
     z-index: 2;
-    backdrop-filter: blur(2rem);
+    backdrop-filter: blur(0.5rem);
 }
 /*temp*/
 .temp{
@@ -126,16 +126,16 @@ nav{
     background-size: cover;
     animation: rain 0.3s linear infinite;
 }
-.rainEffect::before{
+.thunder{
     content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
+    top: -30px;
+    background-size: 350px 250px;
+    width: 350px;
+    height: 250px;
     transform: rotate(180deg);
     background-image: url('../img/others/thunder.png');
-    opacity: 1;
+    opacity: 0.7;
     animation: thunder 4s linear infinite;
 }
 .chanceOfRain{
@@ -248,7 +248,7 @@ section .smoke5{
         opacity: 0;
     }
     21%{
-        opacity: 1;
+        opacity: 0.5;
     }
     25%{
         opacity: 0;
@@ -257,7 +257,7 @@ section .smoke5{
         opacity: 0;
     }
     31%{
-        opacity: 1;
+        opacity: 0.5;
     }
     35%{
         opacity: 0;
