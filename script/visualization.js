@@ -28,7 +28,7 @@ function show_MiddleWare(select_value, weekWeather, AQI) {
  * @param {Object} location -the city filter from show_MiddleWare
  * @property {Object} MinT_MaxT - select DOM span element (id:MinT_MaxT) 
  * @property {Object} Wx - select DOM span element (id:Wx) 
- * @property {Number} WxValue - store Wx value for icon
+ * @property {Number} 8 - store Wx value for icon
  */
 function show_Temp(location) {
     const date = new Date();
@@ -178,7 +178,7 @@ function show_AQI(location) {
             AQI_effect(170);
             break;
         case 6: case 7:
-            settingImg('AQI', 5);
+            settingImg('AQI', 'warning');
             AQI_effect(212);
             break;
         default:
