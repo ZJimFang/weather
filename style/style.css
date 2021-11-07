@@ -366,7 +366,7 @@ section .smoke5 {
 @media screen and (max-width: 480px) {
     .city {
         height: 70px;
-        font-size: 10px;
+        font-size: 40px;
     }
     /* temp */
     .temp_today {
