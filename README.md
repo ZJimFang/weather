@@ -58,18 +58,33 @@ There are five states, which respectively represent the severity of the air poll
 <br  />
 
 based on
+
 <img src="./screenshots/AQI.jpg">
+
+<br />
+
 0-50
+
 <img src="./screenshots/4.png">
+
 51-100
+
 <img src="./screenshots/5.png">
+
 101-150
+
 <img src="./screenshots/6.png">
+
 151-200
+
 <img src="./screenshots/7.png">
+
 201-300
+
 <img src="./screenshots/8.png">
+
 301-500
+
 <img src="./screenshots/9.png">
 
 <br  />
