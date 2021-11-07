@@ -1,46 +1,47 @@
 :root {
     --height: 0px;
-  }
-html,body{
+}
+html,
+body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-position:center
+    font-family: 'Helvetica', 'Arial', 'LiHei Pro', '黑體-繁', '微軟正黑體', sans-serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     height: 100%;
 }
-.city{
+.city {
     margin: 40px 0px 10px 0px;
-    height:80px;
+    height: 80px;
     font-size: 45px;
     font-weight: bold;
     width: auto;
     padding: 0 2%;
 }
-option{
+option {
     align-items: center;
 }
-nav{
+nav {
     width: 600px;
 }
-.item_bar{
+.item_bar {
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
+    justify-content: space-around;
     padding: 0px;
 }
-.item{
+.item {
     padding: 4px 15px;
     font-size: 45px;
     font-weight: bold;
@@ -48,48 +49,48 @@ nav{
     border: 1px solid black;
     cursor: pointer;
 }
-.show{
+.show {
     margin: 1%;
     border: 1px solid black;
     width: 650px;
     height: 380px;
-    background: linear-gradient(to right bottom,rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0));
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
     border-radius: 2rem;
     z-index: 2;
     backdrop-filter: blur(1.5rem);
 }
 /*temp*/
-.temp{
+.temp {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
-.temp_today{
+.temp_today {
     width: 100%;
     height: 60%;
     display: flex;
     flex-direction: row;
 }
-.temp_icon{
+.temp_icon {
     width: 30%;
     margin: 3% 7%;
 }
-.temp_description{
+.temp_description {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.temp_description span:nth-child(1){
+.temp_description span:nth-child(1) {
     font-size: 30px;
 }
-.temp_description span:nth-child(2){
+.temp_description span:nth-child(2) {
     font-size: 40px;
 }
-.temp_description span:nth-child(3){
+.temp_description span:nth-child(3) {
     font-size: 35px;
 }
-.forecast{
+.forecast {
     width: 100%;
     height: 38%;
     display: flex;
@@ -97,7 +98,7 @@ nav{
     align-items: center;
     justify-content: space-around;
 }
-.forecast_item{
+.forecast_item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,30 +108,30 @@ nav{
     border: 1px solid black;
     border-radius: 1rem;
 }
-.forecast_date{
+.forecast_date {
     font-weight: bold;
 }
-.forecast_icon{
-    width:70%;
+.forecast_icon {
+    width: 70%;
 }
-.forecast_T{
+.forecast_T {
     text-align: center;
     font-size: 1em;
     font-weight: bold;
 }
 /* rain */
-.rain{
+.rain {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.rainEffect{
+.rainEffect {
     background-image: url('../img/others/rain.png');
     background-size: cover;
     animation: rain 0.3s linear infinite;
 }
-.thunder{
-    content: "";
+.thunder {
+    content: '';
     position: absolute;
     top: -30px;
     background-size: 600px 300px;
@@ -141,28 +142,28 @@ nav{
     opacity: 0.7;
     animation: thunder 4s linear infinite;
 }
-.chanceOfRain{
+.chanceOfRain {
     display: block;
     font-size: 120px;
 }
 /* aqi */
-.aqi{
+.aqi {
     display: flex;
-    align-items: center;        
-    flex-direction: row;      
+    align-items: center;
+    flex-direction: row;
 }
-.aqi_icon{
+.aqi_icon {
     width: 30%;
     height: 50%;
     margin: 0% 13% 0 17%;
     font-size: 100%;
     text-align: center;
 }
-.aqi_data{
-    font-size: 80px; 
+.aqi_data {
+    font-size: 80px;
 }
 
-section{
+section {
     border-radius: 2rem;
     position: absolute;
     width: 100%;
@@ -170,15 +171,15 @@ section{
     z-index: -1;
     overflow: hidden;
 }
-section .smoke{
-    position:absolute;
+section .smoke {
+    position: absolute;
     left: 0;
     width: 100%;
     background-image: url('../img/others/smoke.png');
     background-size: 1000px 100px;
 }
-section .smoke1{
-    height:var(--height);
+section .smoke1 {
+    height: var(--height);
     opacity: 0.2;
     animation: animate 30s linear infinite;
     z-index: 1000;
@@ -186,32 +187,32 @@ section .smoke1{
     bottom: -40px;
 }
 
-section .smoke2{
-    height:var(--height);
+section .smoke2 {
+    height: var(--height);
     opacity: 0.7;
     animation: animate2 45s linear infinite;
     z-index: 999;
     animation-delay: 5s;
     bottom: -30px;
 }
-section .smoke3{
-    height:var(--height);
+section .smoke3 {
+    height: var(--height);
     opacity: 0.5;
     animation: animate 30s linear infinite;
     z-index: 997;
     animation-delay: -2s;
     bottom: 0px;
 }
-section .smoke4{
-    height:var(--height);
+section .smoke4 {
+    height: var(--height);
     opacity: 0.8;
     animation: animate2 40s linear infinite;
     z-index: 998;
     animation-delay: -2s;
     bottom: 30px;
 }
-section .smoke5{
-    height:var(--height);
+section .smoke5 {
+    height: var(--height);
     opacity: 0.7;
     animation: animate 25s linear infinite;
     z-index: 996;
@@ -219,186 +220,184 @@ section .smoke5{
     bottom: 10px;
 }
 
-@keyframes animate{
-    0%{
-        background-position-x:0px ;
+@keyframes animate {
+    0% {
+        background-position-x: 0px;
     }
-    100%{
+    100% {
         background-position-x: 1000px;
     }
 }
-@keyframes animate2{
-    0%{
-        background-position-x:1000px ;
+@keyframes animate2 {
+    0% {
+        background-position-x: 1000px;
     }
-    100%{
+    100% {
         background-position-x: 0px;
     }
 }
-@keyframes rain{
-    0%{
-        background-position:20% 100%;
+@keyframes rain {
+    0% {
+        background-position: 20% 100%;
     }
-    100%{
-        background-position:0% 0%;
-    }
-}
-@keyframes thunder{
-    0%{
-        opacity: 0;
-    }
-    20%{
-        opacity: 0;
-    }
-    21%{
-        opacity: 0.5;
-    }
-    25%{
-        opacity: 0;
-    }
-    30%{
-        opacity: 0;
-    }
-    31%{
-        opacity: 0.5;
-    }
-    35%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 0;
+    100% {
+        background-position: 0% 0%;
     }
 }
-
+@keyframes thunder {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0;
+    }
+    21% {
+        opacity: 0.5;
+    }
+    25% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0;
+    }
+    31% {
+        opacity: 0.5;
+    }
+    35% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 
 /*平板*/
-@media (max-width:768px){
-    .data{
+@media (max-width: 768px) {
+    .data {
         height: 100%;
         display: flex;
         flex-direction: row;
-        }
-    .city{
+    }
+    .city {
         margin: 0;
-        width:100%;
-        height:20%;
+        width: 100%;
+        height: 20%;
         font-size: 80px;
         font-weight: bold;
         text-align: center;
     }
-    .item_bar{ 
+    .item_bar {
         display: none;
     }
-    .show{
+    .show {
         width: auto;
         margin: 0;
     }
     /*temp*/
-    .temp{
+    .temp {
         width: 100%;
         height: 100%;
     }
-    .temp_today{
-        width:100%;
+    .temp_today {
+        width: 100%;
         height: 100%;
         flex-direction: column;
         align-items: center;
     }
-    .temp_icon{ 
-        width: 75%;
-        height: 40%;
-        margin: 20% 0%;
+    .temp_icon {
+        width: 50%;
+        margin: 20% 0% 10% 0%;
     }
-    .temp_description span{
+    .temp_description span {
         text-align: center;
         margin: 10px;
     }
-    .temp_description span:nth-child(1){
+    .temp_description span:nth-child(1) {
         font-size: 60px;
     }
-    .temp_description span:nth-child(2){
+    .temp_description span:nth-child(2) {
         font-size: 50px;
     }
-    .temp_description span:nth-child(3){
+    .temp_description span:nth-child(3) {
         font-size: 50px;
     }
-    .forecast{
+    .forecast {
         display: none;
     }
     /* rain */
-    .rain{
+    .rain {
         height: 100%;
     }
-    .chanceOfRain{
+    .chanceOfRain {
         font-size: 50px;
         margin: 5px;
     }
-    .thunder{
+    .thunder {
         width: 100%;
         height: 100%;
     }
     /* aqi */
-    .aqi{
+    .aqi {
         justify-content: center;
         flex-direction: column-reverse;
         height: 100%;
     }
-    section{
+    section {
         display: none;
     }
-    .aqi_data{
+    .aqi_data {
         margin: 30px;
         font-size: 60px;
     }
-    .aqi_icon{
-        width: 100%;
-        height: 15%;
-    } 
-    @keyframes rain{
-        0%{
-            background-position:0% 20%;
+    .aqi_icon {
+        width: 50px;
+        height: 50px;
+    }
+    @keyframes rain {
+        0% {
+            background-position: 0% 20%;
         }
-        100%{
-            background-position:2% 0%;
+        100% {
+            background-position: 2% 0%;
         }
     }
 }
 /*手機*/
-@media screen and (max-width:480px){
-    .city{
+@media screen and (max-width: 480px) {
+    .city {
         font-size: 50px;
     }
     /* temp */
-    .temp_today{
+    .temp_today {
         justify-content: space-around;
     }
-    .temp_icon{
+    .temp_icon {
         margin: 60% 0 0 0;
-        height: 30%;
+        width: 60%;
     }
-    .temp_description{
+    .temp_description {
         margin-bottom: 50%;
     }
-    .temp_description span:nth-child(1){
+    .temp_description span:nth-child(1) {
         margin: 50px 0px 0px 0px;
-        font-size:30px;
-    }
-    .temp_description span:nth-child(2){
         font-size: 30px;
     }
-    .temp_description span:nth-child(3){
+    .temp_description span:nth-child(2) {
+        font-size: 30px;
+    }
+    .temp_description span:nth-child(3) {
         font-size: 46px;
     }
-    .chanceOfRain{
+    .chanceOfRain {
         font-size: 25px;
     }
     /* aqi */
-    .aqi_data{
+    .aqi_data {
         margin: 20px;
         font-size: 35px;
     }
-    .aqi_icon{
-        width: 90%;
-        height: 10%;
-    } 
+    .aqi_icon {
+        width: 30px;
+        height: 30px;
+    }
 }
