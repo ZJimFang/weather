@@ -40,16 +40,6 @@ The temperature part will show the high, low ℃ today and weather brief, the ba
 
 <br  />
 
-#### <Strong>Chance of rain</Strong>
-
-if the chance of rain up to 30 the effect will rain in that block sometime if the weather might be thunder + weather it will also show the thunder effect
-<img src="./screenshots/3.png">
-rain effect
-<img src="./screenshots/rain.gif">
-thunder effect
-<img src="./screenshots/thunder.gif">
-
-<br  />
 
 #### <Strong>AQI</Strong>
 
